@@ -4,8 +4,11 @@ const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 const fileUpload = require("express-fileupload");
 const path = require("path");
+const dotenv = require("dotenv");
 
 const errorMiddleware = require("./middleware/error");
+
+dotenv.config();
 
 // Config
 // if (process.env.NODE_ENV !== "PRODUCTION") {
