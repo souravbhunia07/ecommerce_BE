@@ -9,16 +9,26 @@ const dotenv = require("dotenv");
 const errorMiddleware = require("./middleware/error");
 const cors = require('cors');
 
-const allowedOrigins = ['https://incandescent-cactus-8c439b.netlify.app/'];
-app.use(cors({
-  origin: function(origin, callback) {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  }
-}));
+// const allowedOrigins = ['https://incandescent-cactus-8c439b.netlify.app/'];
+// app.use(cors({
+//   origin: function(origin, callback) {
+//     if (!origin || allowedOrigins.includes(origin)) {
+//       callback(null, true);
+//     } else {
+//       callback(new Error('Not allowed by CORS'));
+//     }
+//   }
+// }));
+
+const corsOptions = {
+  origin: "*",
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  preflightContinue: false,
+  optionsSuccessStatus: 204
+};
+
+// Enable CORS
+app.use(cors(corsOptions));
 
 dotenv.config();
 
