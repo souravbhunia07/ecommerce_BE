@@ -9,7 +9,16 @@ const dotenv = require("dotenv");
 const errorMiddleware = require("./middleware/error");
 const cors = require('cors');
 
-app.use(cors());
+const allowedOrigins = ['https://incandescent-cactus-8c439b.netlify.app/'];
+app.use(cors({
+  origin: function(origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  }
+}));
 
 dotenv.config();
 
