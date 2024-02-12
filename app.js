@@ -7,6 +7,9 @@ const path = require("path");
 const dotenv = require("dotenv");
 
 const errorMiddleware = require("./middleware/error");
+const cors = require('cors');
+
+app.use(cors());
 
 dotenv.config();
 
