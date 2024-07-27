@@ -9,7 +9,7 @@ const dotenv = require("dotenv");
 const errorMiddleware = require("./middleware/error");
 const cors = require('cors');
 
-const allowedOrigins = ['https://souravbhunia.shop'];
+const allowedOrigins = ['*'];
 app.use(cors({
   origin: function(origin, callback) {
     // Allow requests with no origin (like mobile apps or curl requests)
