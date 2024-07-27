@@ -20,15 +20,20 @@ const cors = require('cors');
 //   }
 // }));
 
-const corsOptions = {
-  origin: "*",
-  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-  preflightContinue: false,
-  optionsSuccessStatus: 204
-};
+// const corsOptions = {
+//   origin: "*",
+//   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+//   preflightContinue: false,
+//   optionsSuccessStatus: 204
+// };
 
-// Enable CORS
-app.use(cors(corsOptions));
+// // Enable CORS
+// app.use(cors(corsOptions));
+
+app.use(cors({
+    origin: "*",
+    credentials: true
+}));
 
 dotenv.config();
 
