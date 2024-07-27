@@ -22,25 +22,25 @@ const cors = require('cors');
 //   credentials: true // Allow cookies to be sent with requests
 // }));
 
-// const corsOptions = {
-//   origin: "*",
-//   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-//   preflightContinue: false,
-//   optionsSuccessStatus: 204
-// };
+const corsOptions = {
+  origin: "*",
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  preflightContinue: false,
+  optionsSuccessStatus: 204
+};
 
 // // Enable CORS
-// app.use(cors(corsOptions));
+app.use(cors(corsOptions));
 
 // app.use(cors({
 //     origin: "*",
 //     credentials: true
 // }));
 
-app.use(cors({
-  origin: true, // Allow all origins
-  credentials: true // Allow cookies to be sent with requests
-}));
+// app.use(cors({
+//   origin: true, // Allow all origins
+//   credentials: true // Allow cookies to be sent with requests
+// }));
 
 dotenv.config();
 
