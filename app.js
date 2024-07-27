@@ -9,16 +9,18 @@ const dotenv = require("dotenv");
 const errorMiddleware = require("./middleware/error");
 const cors = require('cors');
 
-// const allowedOrigins = ['https://incandescent-cactus-8c439b.netlify.app/'];
-// app.use(cors({
-//   origin: function(origin, callback) {
-//     if (!origin || allowedOrigins.includes(origin)) {
-//       callback(null, true);
-//     } else {
-//       callback(new Error('Not allowed by CORS'));
-//     }
-//   }
-// }));
+const allowedOrigins = ['https://souravbhunia.shop'];
+app.use(cors({
+  origin: function(origin, callback) {
+    // Allow requests with no origin (like mobile apps or curl requests)
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true // Allow cookies to be sent with requests
+}));
 
 // const corsOptions = {
 //   origin: "*",
@@ -30,10 +32,10 @@ const cors = require('cors');
 // // Enable CORS
 // app.use(cors(corsOptions));
 
-app.use(cors({
-    origin: "*",
-    credentials: true
-}));
+// app.use(cors({
+//     origin: "*",
+//     credentials: true
+// }));
 
 dotenv.config();
 
