@@ -9,18 +9,18 @@ const dotenv = require("dotenv");
 const errorMiddleware = require("./middleware/error");
 const cors = require('cors');
 
-const allowedOrigins = ['*'];
-app.use(cors({
-  origin: function(origin, callback) {
-    // Allow requests with no origin (like mobile apps or curl requests)
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
-  credentials: true // Allow cookies to be sent with requests
-}));
+// const allowedOrigins = ['*'];
+// app.use(cors({
+//   origin: function(origin, callback) {
+//     // Allow requests with no origin (like mobile apps or curl requests)
+//     if (!origin || allowedOrigins.includes(origin)) {
+//       callback(null, true);
+//     } else {
+//       callback(new Error('Not allowed by CORS'));
+//     }
+//   },
+//   credentials: true // Allow cookies to be sent with requests
+// }));
 
 // const corsOptions = {
 //   origin: "*",
@@ -36,6 +36,11 @@ app.use(cors({
 //     origin: "*",
 //     credentials: true
 // }));
+
+app.use(cors({
+  origin: true, // Allow all origins
+  credentials: true // Allow cookies to be sent with requests
+}));
 
 dotenv.config();
 
